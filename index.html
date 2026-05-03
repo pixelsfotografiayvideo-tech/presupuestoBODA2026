@@ -80,7 +80,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(12px, 2vw, 18px);
     font-weight: 500;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
     text-transform: uppercase;
     margin-top: 6px;
     margin-bottom: 20px;
@@ -97,7 +97,7 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 13px;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
   }
 
   /* ═══════════════════════════════
@@ -254,11 +254,12 @@
   }
   .pag5-inner .section-sub {
     font-size: 11px;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
     text-transform: lowercase;
     font-weight: 300;
     opacity: 0.7;
     margin-bottom: 40px;
+    text-align: center;
   }
   .pag5-intro {
     font-size: 15px;
@@ -395,7 +396,7 @@
   }
   .pag7-content .pack-sub {
     font-size: 11px;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
     font-weight: 300;
     opacity: 0.7;
     margin-bottom: 30px;
@@ -508,7 +509,7 @@
   }
   .pag9-content .section-sub {
     font-size: 11px;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
     text-transform: lowercase;
     font-weight: 300;
     color: var(--gray);
@@ -573,7 +574,7 @@
   }
   .pag10-inner .section-sub {
     font-size: 11px;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
     text-transform: lowercase;
     font-weight: 300;
     opacity: 0.6;
@@ -757,7 +758,7 @@
   }
   .pag13 .bg {
     position: absolute; inset: 0;
-    background: url('https://res.cloudinary.com/dgo3agrzb/image/upload/v1777834301/pag_13_zq2i5u.jpg') center center / cover no-repeat;
+    background: url('https://res.cloudinary.com/dgo3agrzb/image/upload/v1777834301/pag_13_zq2i5u.jpg') 65% 30% / cover no-repeat;
   }
   .pag13 .bg::after {
     content: '';
@@ -773,7 +774,7 @@
   }
   .pag13-content .section-sub {
     font-size: 11px;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
     text-transform: lowercase;
     font-weight: 300;
     opacity: 0.7;
@@ -812,7 +813,7 @@
   }
   .pag14-inner .section-sub {
     font-size: 11px;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
     text-transform: lowercase;
     font-weight: 300;
     opacity: 0.6;
@@ -1004,9 +1005,78 @@
     .contact-row { gap: 24px; }
     .pag6-content { padding: 40px 28px; }
   }
+
   @media (max-width: 480px) {
-    .pag2, .pag4, .pag5, .pag8, .pag9-content, .pag10, .pag12, .pag14, .pag15 { padding-left: 22px; padding-right: 22px; }
-    .pag7-content, .pag13-content { padding-left: 22px; padding-right: 22px; }
+    /* Padding general */
+    .pag2, .pag4, .pag5, .pag8, .pag9-content, .pag10, .pag12, .pag14, .pag15 { padding-left: 20px; padding-right: 20px; }
+    .pag7-content, .pag13-content { padding-left: 20px; padding-right: 20px; }
+
+    /* FIX 1 & 2 & 5: section-sub con letter-spacing muy ancho rompe en móvil → reducir y no usar &nbsp; */
+    .section-sub,
+    .pag5-inner .section-sub,
+    .pag9-content .section-sub,
+    .pag10-inner .section-sub,
+    .pag14-inner .section-sub,
+    .pag13-content .section-sub {
+      letter-spacing: 3px;
+      font-size: 10px;
+      word-break: keep-all;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* FIX 1: PAG 13 – imagen del colgante, centrar bien el punto focal */
+    .pag13 .bg {
+      background-position: 65% 25%;
+    }
+    .pag13 {
+      min-height: 60vh;
+    }
+
+    /* FIX 2: PAG 14 – section-big-title más pequeño para no desbordar */
+    .pag14-inner .section-big-title {
+      font-size: clamp(36px, 11vw, 60px);
+      letter-spacing: 2px;
+    }
+
+    /* FIX 3: PAG 7 – ocultar el pack-label "P" erróneo en móvil */
+    .pag7-content .pack-label {
+      display: none;
+    }
+
+    /* FIX 4: PAG 6 – mostrar a la pareja, ajustar posición de foco */
+    .pag6 .bg {
+      background-position: center 30%;
+    }
+    .pag6 {
+      align-items: flex-end;
+    }
+    .pag6-content {
+      max-width: 100%;
+      padding: 30px 20px 50px;
+    }
+    .pag6-content .quote {
+      font-size: clamp(26px, 8vw, 42px);
+    }
+
+    /* FIX 5: PAG 5 – section-sub no se corte */
+    .pag5-inner .section-big-title {
+      font-size: clamp(36px, 11vw, 70px);
+      letter-spacing: 2px;
+    }
+
+    /* Ajustes botón contratar en móvil */
+    .btn-contratar {
+      font-size: 11px;
+      padding: 12px 18px;
+      letter-spacing: 1px;
+    }
+
+    /* Adelanto sub */
+    .pag11-content .adelanto-sub {
+      letter-spacing: 4px;
+    }
   }
 </style>
 </head>
@@ -1069,7 +1139,7 @@
 <section class="pag5">
   <div class="pag5-inner">
     <div class="section-big-title">Cómo Funcionará</div>
-    <p class="section-sub">s e s i ó n &nbsp; f o t o g r á f i c a</p>
+    <p class="section-sub">sesión fotográfica</p>
     <p class="pag5-intro">Cada imagen está pensada para contar la historia real de tu boda, con toda la emoción, naturalidad y sensibilidad que merece. Desde los preparativos hasta el último abrazo, acompaño cada momento con discreción y mirada atenta.</p>
     <p class="pag5-intro"><strong>Mira cómo es el proceso completo:</strong></p>
 
@@ -1118,9 +1188,8 @@
 <section class="pag7">
   <div class="bg"></div>
   <div class="pag7-content">
-    <p class="pack-label">P</p>
     <div class="pack-big">Paquetes</div>
-    <p class="pack-sub">f o t o g r á f i c o s</p>
+    <p class="pack-sub">fotográficos</p>
     <p class="pack-desc">Estos son los paquetes que mis clientes más eligen y son un excelente punto de partida. Si uno te gusta, pero no se ajusta al 100%, podemos agendar una reunión y lo personalizamos con gusto para que se adapte a tus prioridades.</p>
   </div>
 </section>
@@ -1186,7 +1255,7 @@
   <img class="pag9-img" src="https://res.cloudinary.com/dgo3agrzb/image/upload/v1777834310/pag_9_axjzo6.jpg" alt="Formas de Pago">
   <div class="pag9-content">
     <div class="section-big-title">Formas de Pago</div>
-    <p class="section-sub">s e s i ó n &nbsp; f o t o g r á f i c a</p>
+    <p class="section-sub">sesión fotográfica</p>
     <div class="pag9-desc">
       <p>Para garantizar tu fecha, es necesario abonar una seña <strong>$50.000 del valor contratado</strong> en el momento de la reserva. La fecha será oficialmente confirmada luego de la fecha de ese pago.</p><br>
       <p>El saldo restante puede ser abonado hasta la fecha de la boda, de forma práctica y flexible. <strong>Aceptamos las siguientes formas de pago:</strong></p>
@@ -1212,7 +1281,7 @@
 <section class="pag10">
   <div class="pag10-inner">
     <div class="section-big-title">Testimonios</div>
-    <p class="section-sub">s e s i ó n &nbsp; f o t o g r á f i c a</p>
+    <p class="section-sub">sesión fotográfica</p>
     <p class="pag10-intro">Mira lo que dicen quienes ya vivieron esta <strong>experiencia</strong> inolvidable.</p>
 
     <div class="testimonials">
@@ -1288,7 +1357,7 @@
 <section class="pag13">
   <div class="bg"></div>
   <div class="pag13-content">
-    <p class="section-sub">s e s i ó n &nbsp; f o t o g r á f i c a</p>
+    <p class="section-sub">sesión fotográfica</p>
     <div class="big-title">Preguntas</div>
   </div>
 </section>
@@ -1297,7 +1366,7 @@
 <section class="pag14">
   <div class="pag14-inner">
     <div class="section-big-title">Preguntas<br>Frecuentes</div>
-    <p class="section-sub">s e s i ó n &nbsp; f o t o g r á f i c a</p>
+    <p class="section-sub">sesión fotográfica</p>
 
     <div class="faq-list">
       <div class="faq-item">
@@ -1376,3 +1445,4 @@
 
 </body>
 </html>
+
